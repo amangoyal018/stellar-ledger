@@ -1,11 +1,8 @@
 import "./App.css";
+import { LoginSignup } from "./Components/Login-signup/LoginSignup";
 
 function App() {
-  return (
-    <>
-      <h1 className="m-4 bg-slate-600 w-20">hello world</h1>
-    </>
-  );
+  return <LoginSignup />;
 }
 
 export default App;
