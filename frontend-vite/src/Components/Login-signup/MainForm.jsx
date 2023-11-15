@@ -4,9 +4,36 @@ import email_image from "../Media/mail.png";
 import pass_image from "../Media/padlock.png";
 import google_img from "../Media/google_img.png";
 
+const google = () =>{
+  window.open("http://localhost:5000/auth/google");
+}
+
 const MainForm = () => {
   const [action, setAction] = useState("Sign Up");
+  // const [email, setemail] = useState("");
+  // const [password, setpassword] = useState("");
+  // const [name, setname] = useState("");
+
+  // const handlesubmit = async(e) =>{
+  //   e.preventDefault();
+  //   let userData ={
+  //     email:email,
+  //     password:password,
+  //     name:name
+  //   }
+  //   const response = await fetch('http://localhost:5000/login',{
+  //       method:'POST',
+  //       body:JSON.stringify(userData),
+  //       headers:{
+  //         'Content-Type':'application/json'
+  //       }
+  //     })
+  //     console.log("bheja gya")
+  //     const data = await response.json();
+  //    console.log(data);
+  //   }
   return (
+    // <form onSubmit={handlesubmit}>
     <div className="container flex flex-col p-4 font-poppins">
       <div className="topic flex flex-col justify-center items-center mt-4">
         <div className="text text-[#3c009d] font-semibold text-4xl h-12">
@@ -24,6 +51,7 @@ const MainForm = () => {
               className="bg-transparent border-none outline-none "
               type="text"
               placeholder="Name"
+              // onChange={e=>setname(e.target.value)}
             />
           </div>
         )}
@@ -34,6 +62,7 @@ const MainForm = () => {
             className="bg-transparent border-none outline-none"
             type="email"
             placeholder="Email Id"
+            // onChange={e=> setemail(e.target.value)}
           />
         </div>
         <div className="entry mt-3 flex items-center justify-center h-12  bg-gray-300 rounded-lg">
@@ -42,6 +71,7 @@ const MainForm = () => {
             className="bg-transparent border-none outline-none"
             type="password"
             placeholder="Password"
+            // onChange={e=> setpassword(e.target.value)}
           />
         </div>
       </div>
@@ -56,10 +86,13 @@ const MainForm = () => {
       <div className="flex items-center justify-center  p-2">Or</div>
 
       <div className="flex items-center justify-center">
-        <button className="flex border-black w-24 rounded-xl">
+        <button className="flex border-black w-24 rounded-xl" onClick={google}>
           <span className="mx-2">Google</span>
           <img src={google_img} alt="" className="w-4 h-4 mt-1 rounded-full" />
         </button>
+      </div>
+      <div>
+        <button value="Submit">submit</button>
       </div>
 
       <div className="submit-container flex items-center justify-center p-2  mt-2  ">
@@ -89,6 +122,7 @@ const MainForm = () => {
         </div>
       </div>
     </div>
+    // </form>
   );
 };
 export default MainForm;

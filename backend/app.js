@@ -57,11 +57,15 @@ passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
+passport.deserializeUser(async function(id, done) {
+  try {
+    const user = await User.findById(id).exec();
+    done(null, user);
+  } catch (err) {
+    done(err, null);
+  }
 });
+
 
 passport.use(new GoogleStrategy({
     clientID: "1017271123551-ujo78vkvu69innoun5tllrmtt29rv718.apps.googleusercontent.com",
@@ -82,41 +86,47 @@ app.get("/auth/google",
   passport.authenticate('google', { scope: ["profile"] })
 );
 
-app.get("/auth/google/home",
-  passport.authenticate('google', { failureRedirect: "/login" }),
+app.get("/auth/google/home", 
+  passport.authenticate('google', { failureRedirect: "http://localhost:5173" }),
   function(req, res) {
     // Successful authentication, redirect to secrets.
-    res.redirect("/secrets");
+    res.redirect("http://localhost:3000");
   });
 
 app.get("/",function(req,res){
     res.send("Server is up and running");
 });
 
-// psuedocode for the type i have to use in react.js for passing data in the react application
 
-// const handleSubmit = async (e)=>{
-//     e.preventDefault();
-//     const response = await fetch('http://localhost:5000/demo',{
-//       method:'POST',
-//       body:JSON.stringify(form),
-//       headers:{
-//         'Content-Type':'application/json'
-//       }
-//     })
-//     const data = await response.json();
-//    console.log(data);
-//   }
+app.post("/login", function(req, res){
+  console.log("aa gya");
+  const user = new User({
+    email: req.body.email,
+    password: req.body.password
+  });
 
+  User.register(user,function(err,user){
+    passport.authenticate("local")(req, res, function(){
+      res.redirect("http://localhost:3000");
+    });
+  });
 
+  req.login(user, function(err){
+    if (err) {
+      console.log(err);
+      // User.register(user,function(err,user){
+      //   passport.authenticate("local")(req, res, function(){
+      //     res.redirect("http://localhost:3000");
+      //   });
+      // });
+    } else {
+      passport.authenticate("local")(req, res, function(){
+        res.redirect("http://localhost:3000");
+      });
+    }
+  });
 
-//   const getUsers = async ()=>{
-//     const response = await fetch('http://localhost:5000/demo',{
-//       method:'GET',
-//     })
-//    const data = await response.json();
-//    setUsers(data);
-//   }
+});
 
 app.listen(5000,()=>{
     console.log('server started')
