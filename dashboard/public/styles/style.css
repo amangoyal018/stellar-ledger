@@ -1,0 +1,144 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(241, 234, 255);
+    overflow-x: hidden;
+    padding-top: 20px;
+    transition: all 0.5s ease;
+}
+
+.sidenav.open {
+    width: 250px;
+}
+
+.sidenav .logo-details {
+    height: 35.2px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 224px;
+}
+
+.sidenav .logo-details .icon {
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.sidenav .logo-details .logo_name {
+    color: #818181;
+    font-size: 25px;
+    font-weight: 600;
+    opacity: 1;
+    transition: all 0.5s ease;
+    padding-left: 16px;
+}
+
+.sidenav.open .logo-details .icon,
+.sidenav.open .logo-details .logo_name {
+    opacity: 1;
+}
+
+.sidenav .logo-details #btn {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 22px;
+    transition: all 0.4s ease;
+    font-size: 23px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.sidenav.open .logo-details #btn {
+    text-align: center;
+}
+
+
+.sidenav a,
+.dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    margin-top: 0px;
+}
+
+
+.sidenav a:hover,
+.dropdown-btn:hover {
+    color: rgb(66, 125, 157);
+}
+
+/* Main content */
+.main {
+    margin-left: 200px;
+    /* Same as the width of the sidenav */
+    font-size: 20px;
+    /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+.active {
+    background-color: rgb(137, 185, 173);
+    color: white;
+}
+
+
+.dropdown-container {
+    display: none;
+    background-color: rgb(255, 197, 197);
+    padding-left: 8px;
+}
+
+
+.fa-caret-down {
+    float: right;
+    padding-right: 8px;
+}
+
+li{
+    list-style: none;
+}
+
+ul{
+    padding-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+form {
+    padding-left: 16px;
+}
+
+button{
+    margin-top: 12px;
+}
+
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}

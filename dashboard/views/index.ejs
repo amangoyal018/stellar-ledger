@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="/styles/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+        <div class="sidenav">
+            <div class="logo-details">
+                
+                <div class="logo_name">SplitKaro</div>
+                <!-- <img src="../public/images/logo.png" alt="logo-img" /> -->
+            </div>
+            <a href="#home">Home</a>
+            <button class="dropdown-btn">Expenses
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="#">Food</a>
+                <a href="#">Clothes</a>
+                <a href="#">Groceries</a>
+                
+                        <div class="list">
+                            <ul>
+                                <% if(locals.newListExpense) { %>
+                                    <% for(var i=0;i<newListExpense.length;i++) { %>
+                                        <a href="#">
+                                        <li>
+                                            <%= newListExpense[i] %>
+                                        </li>
+                                        </a>
+                                    <% } %>
+                                <% } %>
+                            </ul>
+                            <form method="post" action="/expenses">
+                                <input type="text" name="newExpense" class="newExpense">
+                                <button type="submit">Add Expense</button>
+                            </form>
+                        </div>
+                
+            </div>
+            <button class="dropdown-btn">Friends
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="#">Alpha</a>
+                <a href="#">Beta</a>
+                <a href="#">Gamma</a>
+            
+                <div class="list">
+                    <ul>
+                        <% if(locals.newListFriend) { %>
+                            <% for(var i=0;i<newListFriend.length;i++) { %>
+                                <a href="#">
+                                    <li>
+                                        <%= newListFriend[i] %>
+                                    </li>
+                                </a>
+                                <% } %>
+                            <% } %>
+                    </ul>
+                    <form method="post" action="/friends">
+                        <input type="text" name="newFriend" class="newFriend">
+                        <button type="submit">Add Friends</button>
+                    </form>
+                </div>
+            
+            </div>
+            <a href="#groups">Groups</a>
+            <a href="#history">History</a>
+        </div>
+
+        
+    
+        
+        <script>
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        
+        for (var i = 0; i < dropdown.length; i++) { 
+            dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active"); 
+            var dropdownContent=this.nextElementSibling;
+             if (dropdownContent.style.display==="block" ) { 
+                dropdownContent.style.display="none" ; 
+            } else {
+            dropdownContent.style.display="block" ; 
+            } 
+            });
+        }
+        </script>
+        
+        
+</body>
+</html>
