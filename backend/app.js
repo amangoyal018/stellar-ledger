@@ -89,7 +89,6 @@ app.get("/auth/google",
 app.get("/auth/google/home", 
   passport.authenticate('google', { failureRedirect: "http://localhost:5173" }),
   function(req, res) {
-    // Successful authentication, redirect to secrets.
     res.redirect("http://localhost:3000");
   });
 
@@ -101,31 +100,26 @@ app.get("/",function(req,res){
 app.post("/login", function(req, res){
   console.log("aa gya");
   const user = new User({
-    email: req.body.email,
-    password: req.body.password
+    username: req.body.username,
+    password: req.body.password,
+    email: req.body.password
   });
-
-  User.register(user,function(err,user){
-    passport.authenticate("local")(req, res, function(){
-      res.redirect("http://localhost:3000");
-    });
-  });
-
   req.login(user, function(err){
     if (err) {
-      console.log(err);
-      // User.register(user,function(err,user){
-      //   passport.authenticate("local")(req, res, function(){
-      //     res.redirect("http://localhost:3000");
-      //   });
-      // });
+      User.register({username: req.body.username,email:req.body.email}, req.body.password, function(err, user){
+        if (err) {
+          console.log(err);
+        } else {
+          passport.authenticate("local")(req, res, function(){
+            res.send({message:"sucessfull"})
+          });
+        }
+      });
     } else {
       passport.authenticate("local")(req, res, function(){
-        res.redirect("http://localhost:3000");
       });
     }
   });
-
 });
 
 app.listen(5000,()=>{

@@ -3,6 +3,8 @@ import user_image from "../Media/user-profile.png";
 import email_image from "../Media/mail.png";
 import pass_image from "../Media/padlock.png";
 import google_img from "../Media/google_img.png";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const google = () =>{
   window.open("http://localhost:5000/auth/google");
@@ -10,30 +12,29 @@ const google = () =>{
 
 const MainForm = () => {
   const [action, setAction] = useState("Sign Up");
-  // const [email, setemail] = useState("");
-  // const [password, setpassword] = useState("");
-  // const [name, setname] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const [username, setusername] = useState("");
 
-  // const handlesubmit = async(e) =>{
-  //   e.preventDefault();
-  //   let userData ={
-  //     email:email,
-  //     password:password,
-  //     name:name
-  //   }
-  //   const response = await fetch('http://localhost:5000/login',{
-  //       method:'POST',
-  //       body:JSON.stringify(userData),
-  //       headers:{
-  //         'Content-Type':'application/json'
-  //       }
-  //     })
-  //     console.log("bheja gya")
-  //     const data = await response.json();
-  //    console.log(data);
-  //   }
+  const navigate = useNavigate();
+
+  const handlesubmit = async(e) =>{
+    e.preventDefault();
+    let userData ={
+        email:email,
+        password:password,
+        username:username,
+      }
+    
+   if (username && email && password){
+    axios.post("http://localhost:5000/login",userData )
+    .then(navigate('/Dashboard'))
+   }
+   else{
+       alert("invalid input")
+   }
+    }
   return (
-    // <form onSubmit={handlesubmit}>
     <div className="container flex flex-col p-4 font-poppins">
       <div className="topic flex flex-col justify-center items-center mt-4">
         <div className="text text-[#3c009d] font-semibold text-4xl h-12">
@@ -41,17 +42,19 @@ const MainForm = () => {
         </div>
         <div className="decoration w-16 h-1.5 bg-purple-800 rounded-md"></div>
       </div>
+      <form onSubmit={handlesubmit}>
       <div className="entries mt-3 flex flex-col gap-2 items-center">
         {action === "Login" ? (
           <div></div>
         ) : (
+          
           <div className="entry mt-3  flex items-center justify-center h-12 bg-gray-300 rounded-lg ">
             <img className="mx-2" src={user_image} alt="" />
             <input
               className="bg-transparent border-none outline-none "
               type="text"
               placeholder="Name"
-              // onChange={e=>setname(e.target.value)}
+              onChange={e=>setusername(e.target.value)}
             />
           </div>
         )}
@@ -62,7 +65,7 @@ const MainForm = () => {
             className="bg-transparent border-none outline-none"
             type="email"
             placeholder="Email Id"
-            // onChange={e=> setemail(e.target.value)}
+            onChange={e=> setemail(e.target.value)}
           />
         </div>
         <div className="entry mt-3 flex items-center justify-center h-12  bg-gray-300 rounded-lg">
@@ -71,10 +74,14 @@ const MainForm = () => {
             className="bg-transparent border-none outline-none"
             type="password"
             placeholder="Password"
-            // onChange={e=> setpassword(e.target.value)}
+            onChange={e=> setpassword(e.target.value)}
           />
         </div>
       </div>
+      <div>
+        <button value="Submit" >submit</button>
+      </div>
+      </form>
       {action === "Sign Up" ? (
         <div></div>
       ) : (
@@ -90,9 +97,6 @@ const MainForm = () => {
           <span className="mx-2">Google</span>
           <img src={google_img} alt="" className="w-4 h-4 mt-1 rounded-full" />
         </button>
-      </div>
-      <div>
-        <button value="Submit">submit</button>
       </div>
 
       <div className="submit-container flex items-center justify-center p-2  mt-2  ">
@@ -122,7 +126,6 @@ const MainForm = () => {
         </div>
       </div>
     </div>
-    // </form>
   );
 };
 export default MainForm;
