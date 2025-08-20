@@ -4,13 +4,13 @@ import { getStorage } from "firebase/storage";
 import 'firebase/storage'; 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA8e8Fgya6lFEr6EwLq0AhJ16zwTe6Y1bM",
-  authDomain: "paisa-tracker-d6ce1.firebaseapp.com",
-  projectId: "paisa-tracker-d6ce1",
-  storageBucket: "paisa-tracker-d6ce1.appspot.com",
-  messagingSenderId: "211393123451",
-  appId: "1:211393123451:web:2d48eb196e35d1d886bede",
-  measurementId: "G-LQ48DWDDTH"
+  apiKey: "AIzaSyCHLDowW3NU-wKaAN4oYDs9Rw-cRN6I4kE",
+  authDomain: "stellar-ledger-e357e.firebaseapp.com",
+  projectId: "stellar-ledger-e357e",
+  storageBucket: "stellar-ledger-e357e.firebasestorage.app",
+  messagingSenderId: "566171288591",
+  appId: "1:566171288591:web:df526e8937367ecb444f7a",
+  measurementId: "G-0KGDEYD2GV"
 };
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth()
