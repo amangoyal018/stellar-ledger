@@ -1,6 +1,6 @@
-# Paisa-Vasooli
+# Stellar Ledger
 
-Paisa Vasooli is a website built with the MERN stack to help you manage and track your expenses. 
+Stellar Ledger is a website built with the MERN stack to help you manage and track your expenses. 
 This project was made during the Codesangam 2023 Event conducted by CC Club MNNIT Allahabad, the topic being "Thoth's Steller Ledger"
 
 ## Features
@@ -41,15 +41,6 @@ This project was made during the Codesangam 2023 Event conducted by CC Club MNNI
 - **Stock Heatmap**: Check out current trends in trendy stocks though a heatmap
 - **Rewards:** In-App achievement badges for achieving certain financial targets
 
-## Images
-Few Images from the site
-
-![image](https://github.com/Khanak21/Paisa-Vasooli/assets/127039986/7c49533a-7f52-4c7c-9007-c223f4189a18)
-
-![image](https://github.com/Khanak21/Paisa-Vasooli/assets/127039986/d6c2ee30-6e79-4fde-a9fa-2d4359d8fe12)
-
-![image](https://github.com/Khanak21/Paisa-Vasooli/assets/127039986/dca581a0-e721-4e95-8077-6e0f4fe5b0de)
-
 ## Tech Stack
 
 - **Frontend:** React.js
@@ -68,7 +59,7 @@ Few Images from the site
 ## Installation
 
 1. Clone the repository:
-   `git clone https://github.com/Khanak21/Paisa-Vasooli.git`
+   `git clone https://github.com/amangoyal018/stellar-ledger`
 
 2. Install dependencies for both frontend and backend:
 
@@ -94,18 +85,4 @@ npm run serve
 
 6. Access the application at `http://localhost:3000/`
 
-## Future Additions
-- **Payment Gateways:** Connection to payement apps to enable seamless on-site transactions in groups
-- **Integration with payment apps**: Getting transaction data from UPI apps and displaying it on website
-- **Stock prediction:** Integrating ML to display stock predictions of user-selected stocks
-- **Contacts as friends:** Automatically adding all contacts related to a gmail account in friends' list
-- **Drag and Drop:** Drag and Drop feature for file upload in vault
-- **Pro Version:** Adding a paid version with specific features unlocked, and locked otherwise
 
-## Team Members
-1. Khanak Patwari 
-2. Sahil Gupta 
-3. Shikhar Pandya
-
-## Deployed Link
-Access the deployed site here: https://paisa-vasooli.netlify.app/
